@@ -430,13 +430,15 @@ section.prompt-main {
 }
 .send {
     width: 40px;
-    text-align: center;
     line-height: 0;
     background: #212121;
     height: 40px;
     border-radius: 50%;
     padding: 10px;
     line-height: 33px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
 }   
 
 ::placeholder {
@@ -539,7 +541,8 @@ select {
     background: #ececec;
     background-image: none;
     flex: 1;
-    padding: 10px;
+    padding: 2px;
+    padding-left: 8px;
     font-weight: 600;
     color: #000000;
     cursor: pointer;
@@ -802,3 +805,67 @@ section.login-area-main {
     text-align: start;
     margin-top: -8px;
 }
+.correct-answer {
+    display: flex;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1d9ae4;
+    line-height: 1.5; /* Adjusted for better spacing */
+    padding: 20px 15px; /* Reduced padding for smaller screens */
+    gap: 10px; /* Add space between items when wrapping */
+  }
+  
+  .text-content {
+    flex: 1; /* Allows text to occupy remaining space */
+    margin-bottom: 10px; /* Adds spacing below text for smaller screens */
+  }
+  
+  .submit-button {
+    background-color: #1d9ae4;
+    color: white;
+    font-size: 16px; /* Adjust font size for smaller screens */
+    padding: 12px 30px; /* Adjust padding for better responsiveness */
+    border: none;
+    border: 2px solid black;
+    /* border-radius: 5px;   */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: rgb(2, 84, 180); /* Slightly darker shade on hover */
+    transform: scale(1.05); /* Adds a subtle zoom effect */
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 768px) {
+    .correct-answer {
+      font-size: 16px; /* Smaller font size for tablets */
+      flex-direction: column; /* Stack content vertically */
+      align-items: flex-start; /* Align items to the left */
+    }
+  
+    .submit-button {
+      width: 100%; /* Button takes full width on smaller screens */
+      text-align: center; /* Centers button text */
+      padding: 12px 20px; /* Adjust padding for better fit */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .correct-answer {
+      font-size: 14px; /* Further reduce font size for phones */
+      line-height: 1.4; /* Adjust line height for better readability */
+      padding: 15px 10px; /* Reduce padding for smaller screens */
+    }
+  
+    .submit-button {
+      font-size: 14px; /* Smaller font size for phones */
+      padding: 10px 15px; /* Compact padding for smaller screens */
+    }
+  }
+  
+  

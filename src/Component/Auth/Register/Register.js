@@ -1,12 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { signUpValidation } from "../Validation/Validation";
 import { signUpService } from "../Service/Service";
 
+
 function Register() {
+  const navigate =useNavigate();
   const [formData, setFormData] = useState({ name: "",  number: "", email: "",  password: ""});
   const [errors, setErrors] = useState({});
-
+  const userData = localStorage.getItem("user_Data");
+   
+  useEffect(() => {
+    if (userData) {
+      navigate("/chatBot");
+    }
+  }, [navigate]);
  
  
   const handleInputChange = (e) => {

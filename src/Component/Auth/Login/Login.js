@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInValidation } from "../Validation/Validation";
 import { LoginService } from "../Service/Service";
@@ -9,7 +9,14 @@ function Login() {
   const navigate =useNavigate();
   const [formData, setFormData] = useState({email: "",  password: ""});
   const [errors, setErrors] = useState({});
-  const {  setUsers } = useAuth();
+  const {setUsers } = useAuth();
+  const userData = localStorage.getItem("user_Data");
+   
+    useEffect(() => {
+      if (userData) {
+        navigate("/chatBot");
+      }
+    }, [navigate]);
  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,17 +25,17 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const combinedData = { access_token:'fgudbhjfghghf', refresh:"bhvfg", user: {name:"krishnam"} };
-    // localStorage.setItem("user_Data",JSON.stringify(combinedData))
-    // setUsers(combinedData)
-    // navigate("/chatBot")
-    // return false
+    const combinedData = { access_token:'fgudbhjfghghf', refresh:"bhvfg", user: {name:"krishnam"} };
+    localStorage.setItem("user_Data",JSON.stringify(combinedData))
+    setUsers(combinedData)
+    navigate("/chatBot")
+    return false
     try{
       const validation= await signInValidation(formData)
       setErrors(validation);
       if(Object.keys(validation).length === 0){
        const response = await LoginService(formData)
-       if(response.status == 200 || response.status == 201){
+       if(response.status === 200 || response.status === 201){
           console.log("user Login Successfully")
           const { access_token, refresh, user } = response.data;
           const combinedData = { access_token, refresh, user: user };
@@ -42,6 +49,8 @@ function Login() {
       console.log("Error during  login form submission:", error)
     }
   };
+
+
 
   return (
     <div className="main-wrapper">
@@ -98,7 +107,7 @@ function Login() {
                 </div> */}
                 <div className="create_acc">
                 <span>Or</span>
-                <Link to="/register" ><img src="assets/img/use.png"/>Create an account</Link>
+                <Link to="/register" ><img src="assets/img/use.png" alt="user"/>Create an account</Link>
               </div>
               </div>
             </div>
