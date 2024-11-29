@@ -2,24 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signUpValidation } from "../Validation/Validation";
 import { signUpService } from "../Service/Service";
+import Loading from "../../pages/Loading/Loading";
 
 
 function Register() {
   const navigate =useNavigate();
   const [formData, setFormData] = useState({ name: "",  number: "", email: "",  password: ""});
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); 
   const userData = localStorage.getItem("user_Data");
    
   useEffect(() => {
     if (userData) {
-      navigate("/chatBot");
+      navigate("/questionDisplay");
     }
-  }, [navigate]);
+  }, [navigate,userData]);
  
  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
   const handleSubmit = async (e) => {
@@ -28,13 +31,17 @@ function Register() {
       const validation= await signUpValidation(formData)
       setErrors(validation);
       if(Object.keys(validation).length === 0){
+        setLoading(true); 
        const response = await signUpService(formData)
-       if(response.status == 200 || response.status == 201){
+       if(response.status === 200 || response.status === 201){
           console.log("user Signup Successfully")
+          setLoading(false); 
+          navigate("/login")
           setFormData({ name: "",  number: "", email: "",  password: "" });
        }
       }
     }catch(error){
+      setLoading(false);
       console.log("Error during  signUp form submission:", error)
     }
   };
@@ -42,6 +49,7 @@ function Register() {
 
   return (
     <div className="main-wrapper">
+    {loading ? <Loading/> :<>
       {/* Image Section */}
       <section className="img-area">
         <div className="img_left">
@@ -70,28 +78,28 @@ function Register() {
                     <span className="icon">
                       <img src="assets/img/user.png" alt="User Icon" />
                     </span>
-                    <input type="text" placeholder="Enter name" name="name"  value={formData.name} onChange={handleInputChange}   />
+                    <input type="text"  placeholder="Enter name" name="name"  autoComplete="name"   value={formData.name} onChange={handleInputChange}   />
                   </div>
                   {errors.name && <p className="error">{errors.name}</p>} 
                   <div className="input-group">
                     <span className="icon">
                       <img src="assets/img/phone-call.png" alt="Phone Icon"  />
                     </span>
-                    <input type="text" placeholder="Enter number"  name="number"  value={formData.number}     onChange={handleInputChange}    />
+                    <input type="text" placeholder="Enter number"  name="number"  autoComplete="tel"   value={formData.number}     onChange={handleInputChange}    />
                   </div>
                   {errors.number && <p className="error">{errors.number}</p>} 
                   <div className="input-group">
                     <span className="icon">
                       <img src="assets/img/email.png" alt="Email Icon" />
                     </span>
-                    <input type="text" placeholder="Enter email"  name="email" value={formData.email}     onChange={handleInputChange}    />
+                    <input type="text" placeholder="Enter email"  name="email" autoComplete="email"  value={formData.email}     onChange={handleInputChange}    />
                   </div>
                   {errors.email && <p className="error">{errors.email}</p>} 
                   <div className="input-group">
                     <span className="icon">
                       <img src="assets/img/lock.png" alt="Lock Icon" />
                     </span>
-                    <input type="password" placeholder="Create password" name="password" value={formData.password}     onChange={handleInputChange}    />
+                    <input type="password" placeholder="Create password" name="password" autoComplete="new-password" value={formData.password}     onChange={handleInputChange}    />
                   </div>
                   {errors.password && <p className="error">{errors.password}</p>} 
                   <button type="submit" className="login-btn">
@@ -106,6 +114,7 @@ function Register() {
             </div>
           </div>
       </section>
+      </>}
     </div>
   );
 }
