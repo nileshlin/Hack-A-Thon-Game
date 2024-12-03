@@ -28,11 +28,11 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const combinedData = { access_token:'fgudbhjfghghf', refresh:"bhvfg", user: {name:"krishnam"} };
-    // localStorage.setItem("user_Data",JSON.stringify(combinedData))
-    // setUsers(combinedData)
-    // navigate("/questionDisplay")
-    // return false
+    const combinedData = { access_token:'fgudbhjfghghf', refresh:"bhvfg", user: {name:"krishnam"} };
+    localStorage.setItem("user_Data",JSON.stringify(combinedData))
+    setUsers(combinedData)
+    navigate("/questionDisplay")
+    return false
     try{
       const validation= await signInValidation(formData)
       setErrors(validation);

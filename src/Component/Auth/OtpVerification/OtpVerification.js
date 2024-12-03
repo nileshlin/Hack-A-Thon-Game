@@ -23,7 +23,7 @@ const OtpVerification = () => {
           if (response.status === 200 || response.status === 201) {
             setLoading(false); 
             console.log("User verified OTP successfully");
-            navigate("/login");
+            navigate("/createTeam",{state:{userId:"email@gmail.com"}});
           }
         } catch (error) {
           setLoading(false); 

@@ -7,6 +7,219 @@
     padding: 80px 0;
     height: 100vh;
     transition: 0.5s;
+  }
+  
+  .ques_in_sort a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 40px;
+    color: #212121;
+    box-shadow: 0px 0px 8px #0c0c0c1a;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.5s;
+  }
+  
+  .question-in {
+    width: 100%;
+    max-width: 1070px;
+    transition: 0.5s;
+  }
+  
+  .ques-arwo {
+    margin-left: 15px;
+    transition: 0.5s;
+  }
+  
+  .ques-arwo img {
+    width: 36px;
+    height: 36px;
+    background: #eed9f5;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.5s;
+    padding: 6px;
+    box-shadow: 0px 0px 3px #2d2d2d2e;
+  }
+  
+  .ques_in_sort a:hover .ques-arwo img {
+    transform: rotate(90deg);
+    transition: 0.5s;
+  }
+  
+  .ques_in_sort a:hover {
+    margin-top: -4px;
+    transition: 0.5s;
+  }
+  
+  .btn-load-more {
+    display: block;
+    max-width: 125px;
+    margin: 0 0 0 auto;
+    text-align: center;
+  }
+  
+  .btn-load-more a img {
+    margin-left: 6px;
+    max-width: 30px;
+  }
+  
+  .btn-load-more {
+    display: block;
+    max-width: 125px;
+    margin: 0 0 0 auto;
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .btn-load-more a {
+    width: 100%;
+    padding: 10px 15px;
+    background: linear-gradient(to right, #8b3ca5, #0d39c8, #0027a5d4);
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    letter-spacing: 0.5px;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-transform: capitalize;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    
+  }
+  
+  .btn-load-more a:hover {
+    transition: background 0.3s;
+    background: linear-gradient(to right, #0027a5d4, #0d39c8, #8b3ca5);
+  }
+  
+  .question-in {
+    margin: 0 10px;
+  }
+  
+  .sgn-bx {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .ques_in_sort.sgn-bx a {
+    display: grid;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 700;
+  }
+  
+  .sgn-bx {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .sgn-bx .ques-arwo {
+    margin-left: 0;
+    transition: 0.5s;
+    margin-top: 14px;
+  }
+  
+  .sglmain .btn-load-more {
+    display: block;
+    max-width: 118px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .ques-arwo {
+      margin-left: 10px;
+      width: 38px;
+      height: 38px;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .ques-arwo {
+      display: none;
+    }
+  
+    .question-in {
+      margin: 0 10px;
+    }
+  
+    .ques_in_sort a {
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  
+    .btn-load-more a {
+      padding: 13px 13px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  
+    .prompt-main-ques {
+      height: 100vh;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .prompt-main-ques {
+    background: #fcf4ff;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+    height: 100vh;
+    transition: 0.5s;
 }
 .ques_in_sort a {
     display: flex;
@@ -53,9 +266,9 @@
 }
 .btn-load-more {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center;     /* Align the content vertically */
-    margin: 0 auto;          /* Auto margin for centering */
+    justify-content: center;  
+    align-items: center;     
+    margin: 0 auto;          
     padding-top: 15px;
   }
 
@@ -73,9 +286,7 @@
     margin: 0 0 0 auto;
     text-align: center;
     padding-top: 15px;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+ 
     text-align: center;
 }
 .btn-load-more a {
@@ -134,4 +345,4 @@
     font-size: 14px;
     font-weight: 500;
 }
-}
+} */
